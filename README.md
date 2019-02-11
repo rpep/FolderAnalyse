@@ -1,4 +1,4 @@
-# Folder-analyse
+# FolderAnalyse
 
 The problem definition:
 
@@ -12,7 +12,27 @@ Requirements are that the software is:
 
 * Easy to understand
 * Robust
-* Documented 
+* Documented
 * Testable
 * Can be extended if necessary
 
+# Using the application:
+
+To generate statistics about a particular file:
+
+```bash
+FolderAnalyse /path/to/a/file.txt
+```
+
+To generate statistics about all *.txt files in a folder:
+```
+FolderAnalyse /path/to/a/folder
+```
+
+To generate statistics about all *.md files in a folder:
+```
+FolderAnalyse /path/to/a/folder -t ".md"
+```
+
+Tests make use of out-of-copyright Project Gutenberg books as useful reference cases.
+These are included in the tests/ folder.
