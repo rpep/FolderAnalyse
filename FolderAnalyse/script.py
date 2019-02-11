@@ -36,3 +36,14 @@ def parse_args():
                              "processing.")
 
     return parser.parse_args()
+
+
+def exit(message):
+    """
+    exit(message)
+
+    Quits the running application and gives an error message
+    of message.
+    """
+    print(message)
+    sys.exit()
