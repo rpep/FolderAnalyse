@@ -1,7 +1,7 @@
 """
 Ryan Pepper (2018)
 
-parser.py
+fileparser.py
 
 This file contains a parser function that processes a text file.
 
@@ -34,8 +34,10 @@ def parse(filename, exclusions=None, case_sensitive=False, sort=False):
     # Here we make the assumption that the files are independently
     # small enough to fit in memory. This may not be the case, but can be
     # handled. We replace the characters in the exclusions list
-    # with a space, in order to separate words out.
+    # with a space, in order to separate words out. This is mainly designed
+    # for punctuation, but it is not turned on by default.
     text = f.read()
+    exclusions = ['\n'] + exclusions
     for exclusion in exclusions:
         text = text.replace(exclusion, ' ')
 
