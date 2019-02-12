@@ -1,6 +1,7 @@
 # FolderAnalyse
 
 [![Build Status](https://travis-ci.com/rpep/folder-analyse.svg?branch=master)](https://travis-ci.com/rpep/folder-analyse)
+[![Documentation Status](https://readthedocs.org/projects/folderanalyse/badge/?version=latest)](https://folderanalyse.readthedocs.io/en/latest/?badge=latest)
 
 The problem definition:
 
