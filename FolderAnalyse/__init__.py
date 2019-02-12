@@ -3,7 +3,7 @@ import glob
 import os
 name='FolderAnalyse'
 
-path = os.path.dirname(__file__)
+dirname = os.path.dirname(__file__)
 
 
 def runtests():
@@ -19,6 +19,6 @@ def runtests():
     """
 
     from pytest import main
-    pytest.main(['-v', 'tests'])
+    pytest.main(['-v', os.path.join(dirname, 'tests')])
 
 
