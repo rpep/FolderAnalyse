@@ -8,13 +8,22 @@ project.
 from setuptools import setup, find_packages
 import os
 
+def read(fname):
+    """ 
+    Read in text from a file. 
+
+    Function from Python setuptools documenation.
+    https://pythonhosted.org/an_example_pypi_project/setuptools.html
+    """
+    return open(os.path.join(os.path.dirname(__file__), fname)).read()
 
 setup(
     name='FolderAnalyse',
-    version='0.1.1',
+    version='0.1.2',
     description='A program that analyses files in a directory with '
                 'word frequency statistics.',
-    author='Ryan Pepper',
+    long_description=read("README.md"),
+    author='Ryan Alexander Pepper',
     author_email="ryan.pepper@soton.ac.uk",
     url="http://github.com/rpep/FolderAnalyse",
     packages=find_packages(),

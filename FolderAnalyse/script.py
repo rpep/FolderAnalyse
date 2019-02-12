@@ -12,7 +12,15 @@ import FolderAnalyse
 from FolderAnalyse.process import process_dir, process_file
 
 
-def get_parser():
+def _get_parser():
+    """
+    _get_parser()
+
+    Construct a parser using argparse to collect user supplied
+    arguments. This is designed to be called from the entrypoint
+    specified in setup.py
+    """
+
     parser = argparse.ArgumentParser(
             description="%(prog)s  [options]\n"
                         "Produce word statistics for files in a directory."
@@ -42,20 +50,24 @@ def get_parser():
     return parser
 
 
-def exit(message, parser):
+def _exit(message, parser):
     """
-    exit(message)
+    exit(error, parser)
 
-    Quits the running application and gives an error message
-    of message.
+    Quits the running application and prints the parser help, before printing
+    the specified error message.
     """
+
     parser.print_help()
     print(f"\n\nError: {message}. See above for help.")
     sys.exit()
 
 
 def main():
-    parser = get_parser()
+    """
+    Main func
+    """
+    parser = _get_parser()
     args = parser.parse_args()
 
     if args.runtests:
@@ -76,15 +88,16 @@ def main():
 
     elif directory:
         try:
-            stats_text, freq_dicts, combined_dict = process_dir(path, extension,
+            stats_text, freq_dicts, combined_dict = process_dir(path, 
+                                                                extension,
                                                                 N, case)
 
         except FileNotFoundError:
-            exit(f"No files with extension {extension} found in directory",
+            _exit(f"No files with extension {extension} found in directory",
                  parser)
 
     else:
-         exit("File or directory does not exist", parser)
+         _exit("File or directory does not exist", parser)
 
     print(stats_text)
 
