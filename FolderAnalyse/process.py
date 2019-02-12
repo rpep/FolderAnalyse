@@ -44,7 +44,7 @@ def underline(title):
     Hello
     -----
     """
-    return title + '\n' + '-'*(len(title)-1) + '\n'
+    return title + '\n' + '-'*(len(title)) + '\n'
 
 
 def process_file(file, N=10, case_sensitive=False):
