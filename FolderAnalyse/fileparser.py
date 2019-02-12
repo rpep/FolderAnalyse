@@ -37,6 +37,7 @@ def _read(filename, encodings=['utf-8', 'utf-16', 'ascii', 'latin-1']):
                 f.close()
             except FileNotFoundError:
                 raise FileNotFoundError("Could not open file.")
+        raise UnicodeError(filename)
 
     f.close()
     return text
