@@ -10,7 +10,37 @@ import re
 import logging
 
 
+def _read(filename, encodings=['utf-8', 'utf-16', 'ascii', 'latin-1']):
+    """
+    _read(filename)
 
+    Try to read files and return the text regardless of their encoding.
+    Raises UnicodeError on failure.
+    
+    Input:
+    
+    filename, str
+        File to be read
+    
+    Output:
+        str:
+            Contents of the file
+    """
+    text = None
+    
+    while not text:
+        for encoding in encodings:
+            try:
+                f = open(filename, 'r', encoding='utf-8')
+                text = f.read()
+            except UnicodeDecodeError:
+                f.close()
+            except FileNotFoundError:
+                raise FileNotFoundError("Could not open file.")
+
+    f.close()
+    return text
+    
 def parse(filename, case_sensitive=False, sort=False):
     """
     parse(filename, case_sensitive=False, sort=False)
@@ -39,27 +69,9 @@ def parse(filename, case_sensitive=False, sort=False):
      'over: 1, 'the': 1, 'lazy': 1, 'dog.': 1}
     """
 
-    try:
-        f = open(filename, 'r')
-    except FileNotFoundError:
-        raise FileNotFoundError("Could not open file - are you sure it exists?")
-    except UnicodeDecodeError:
-        try:
-            f = open(filename, 'r', encoding='utf-8')
-        except:
-            pass
-        try:
-            f = open(filename, 'r', encoding='utf-16')
-        except:
-            raise UnicodeError(filename)
 
-    # Here we make the assumption that the files are independently
-    # small enough to fit in memory. This may not be the case, but can be
-    # handled. I use regular expressions to match at word boundaries, but 
-    # treat apostrophes and hyphens as part of a word - i.e.
-    # the regular expression will match "Claire's dogs" as two words and not 
-    # three.
-    text = f.read()
+    text = _read(filename)
+
 
     # If case_sensitive is true we make the text all lower case.
     if not case_sensitive:
