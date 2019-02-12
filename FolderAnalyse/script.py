@@ -84,7 +84,16 @@ def main():
     file = os.path.isfile(path)
 
     if file:
-        stats_text, freq_dict = process_file(path, N, case)
+        try:
+            stats_text, freq_dict = process_file(path, N, case)
+
+        except FileNotFoundError:
+            _exit(f"File {path} not found.",
+                 parser)
+
+        except UnicodeError:
+            _exit(f"Could not open file {e.args[0]} as encoding could not be "
+                   "detected.")
 
     elif directory:
         try:
@@ -95,6 +104,9 @@ def main():
         except FileNotFoundError:
             _exit(f"No files with extension {extension} found in directory",
                  parser)
+        except UnicodeError as e:
+            _exit(f"Could not open file {e.args[0]} as encoding could not be "
+                   "detected and could not be processed.")
 
     else:
          _exit("File or directory does not exist", parser)

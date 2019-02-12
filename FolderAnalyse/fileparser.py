@@ -41,10 +41,17 @@ def parse(filename, case_sensitive=False, sort=False):
 
     try:
         f = open(filename, 'r')
-    except:
-        raise FileNotFoundError(
-            "Could not open file - are you sure it exists?"
-            )
+    except FileNotFoundError:
+        raise FileNotFoundError("Could not open file - are you sure it exists?")
+    except UnicodeDecodeError:
+        try:
+            f = open(filename, 'r', encoding='utf-8')
+        except:
+            pass
+        try:
+            f = open(filename, 'r', encoding='utf-16')
+        except:
+            raise UnicodeError(filename)
 
     # Here we make the assumption that the files are independently
     # small enough to fit in memory. This may not be the case, but can be
