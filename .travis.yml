@@ -4,7 +4,7 @@ python:
   - "3.7-dev"  # 3.7 development branch
 
 before_script:
-  - pip install -r pytest-cov
+  - pip install pytest-cov
 
 install:
   - pip install .
