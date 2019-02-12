@@ -3,41 +3,28 @@
 [![Build Status](https://travis-ci.com/rpep/folder-analyse.svg?branch=master)](https://travis-ci.com/rpep/folder-analyse)
 [![Documentation Status](https://readthedocs.org/projects/folderanalyse/badge/?version=latest)](https://folderanalyse.readthedocs.io/en/latest/?badge=latest)
 
-The problem definition:
+FolderAnalyse is an application which provides word frequency statistics about files.
+It is designed for use primarily as a command line application, but it can also be 
+used as a library.
 
-> Consider a folder containing a number of text files.
-
-> It is required to find the top 10 most frequently used words in each file, and report this. Additionally, it must be possible to report on the top 10 most frequently used words across all the files analysed.
-
-> It must be possible to generate a report, suitable for archiving, summarising the results.
-
-Requirements are that the software is:
-
-* Easy to understand
-* Robust
-* Documented
-* Testable
-* Can be extended if necessary
-
-# Using the application:
-
-To generate statistics about a particular file:
+To install FolderAnalyse, simply install from PyPi via:
 
 ```bash
-FolderAnalyse /path/to/a/file.txt
+python3 -m pip install FolderAnalyse
 ```
 
-To generate statistics about all *.txt files in a folder:
+Alternatively, to try out the latest version, install directly from GitHub with:
 
 ```bash
-FolderAnalyse /path/to/a/folder
+python3 -m pip install git+https://github.com/rpep/FolderAnalyse
 ```
 
-To generate statistics about all *.md files in a folder:
+After that, FolderAnalyse will be available at the command line; to view the help
+simply call
 
 ```bash
-FolderAnalyse /path/to/a/folder -t ".md"
+FolderAnalyse -h
 ```
 
-Tests make use of out-of-copyright Project Gutenberg books as useful reference cases.
-These are included in the tests/ folder.
+For documentation on how to use FolderAnalyse, please see the documentation
+[here](https://folderanalyse.readthedocs.io/en/latest/).
