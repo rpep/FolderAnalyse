@@ -31,7 +31,7 @@ def _read(filename, encodings=['utf-8', 'utf-16', 'ascii', 'latin-1']):
     while not text:
         for encoding in encodings:
             try:
-                f = open(filename, 'r', encoding='utf-8')
+                f = open(filename, 'r', encoding=encoding)
                 text = f.read()
             except UnicodeDecodeError:
                 f.close()
