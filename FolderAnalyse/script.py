@@ -97,9 +97,9 @@ def main():
 
     elif directory:
         try:
-            stats_text, freq_dicts, combined_dict = process_dir(path, 
-                                                                extension,
-                                                                N, case)
+            stats_text, _, _, _, combined_dict = process_dir(path, 
+                                                             extension,
+                                                             N, case)
 
         except FileNotFoundError:
             _exit(f"No files with extension {extension} found in directory",
