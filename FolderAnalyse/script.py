@@ -8,8 +8,7 @@ This script contains the main entrypoint to the folder-analyse application.
 import argparse
 import os
 import sys
-#from process import process_file, process_dir
-
+from FolderAnalyse.process import process_dir, process_file
 
 def parse_args():
     parser = argparse.ArgumentParser(
@@ -20,8 +19,9 @@ def parse_args():
     parser.add_argument('path', type=str,
                         help="Path to a directory or a file.")
 
-    parser.add_argument('-r', '--report', action='store_true',
-                        help="Generate a report about a directory")
+    parser.add_argument('-r', '--report', type=str, default=None,
+                        help="Generate a report about a directory and\n"
+                             "save it to this filename")
 
     parser.add_argument('-t', '--type', type=str, default='.txt',
                         help="If path is to a directory, file extension\n"
@@ -47,3 +47,33 @@ def exit(message):
     """
     print(message)
     sys.exit()
+
+
+def main():
+    args = parse_args()
+    print(dir(args))
+    path = args.path
+    extension = args.type
+    report = args.report
+    case_insensitive = args.case_insensitive
+
+    directory = os.path.isdir(path)
+    file = os.path.isfile(path)
+
+    if file:
+         stats_text, report_text = process_file(file, report)
+
+    elif directory:
+         stats_text, report_text = process_dir(path, extension, report)
+
+    else:
+         exit("Path does not exist")
+
+
+
+
+
+
+
+if __name__ == '__main__':
+    main()

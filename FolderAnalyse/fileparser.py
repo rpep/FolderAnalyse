@@ -8,7 +8,7 @@ This file contains a parser function that processes a text file.
 """
 
 
-def parse(filename, exclusions=None, case_sensitive=False, sort=False):
+def parse(filename, exclusions=[], case_sensitive=False, sort=False):
     """
     parse(filename)
 

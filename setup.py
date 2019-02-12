@@ -5,7 +5,7 @@ This script sets configuration options for setuptools for the FolderAnalyse
 project.
 
 """
-from setuptools import setup
+from setuptools import setup, find_packages
 
 setup(
    name='FolderAnalyse',
@@ -14,7 +14,7 @@ setup(
                'word frequency statistics.',
    author='Ryan Pepper',
    author_email='ryan.pepper@soton.ac.uk',
-   packages=['FolderAnalyse'],
+   packages=find_packages(),
    entry_points = {
         "console_scripts": [ "FolderAnalyse=FolderAnalyse.script:main" ]
        },
