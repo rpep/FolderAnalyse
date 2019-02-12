@@ -1,15 +1,14 @@
 import glob
 import os
-from FolderAnalyse import fileparser
-from textwrap import dedent
+from FolderAnalyse import fileparser as fp
 
-    
+
 def top_frequencies(freq_dict, nterms=10):
     """
     top_frequencies(freq_dict, name, nterms)
-    
+
     Returns the first nterms in the dictionary.
-    
+
     Note:
     This wrapper is needed just to handle
     files with less than 10 words.
@@ -19,34 +18,69 @@ def top_frequencies(freq_dict, nterms=10):
         return dict(items)
     else:
         return dict(items[:nterms])
-    
-    
 
-def process_file(file, N=10, report=False):
-    stats_text = f"{file} Top {N} Word Frequencies:"
-    frequency_dict = fileparser.parse(file, sort=True)
+
+def _dict_to_text(freq_dict):
+    """
+    _dict_to_text(freq_dict):
+
+    Internal routine to print items and values
+    in a sorted dictionary, to avoid duplicating
+    this code in process_file and in process_dir.
+    """
+    stats_text = ""
+    for i, (key, value) in enumerate(freq_dict.items()):
+        stats_text += f"{i+1}. {key}, {value}\n"
+    stats_text += '\n'
+    return stats_text
+
+
+def underline(title):
+    """
+    Returns title but with another line matching the
+    length as in restructured text format.
+
+    >>> print(FolderAnalyse.process.underline('Hello'))
+    Hello
+    -----
+    """
+    return title + '\n' + '-'*(len(title)-1) + '\n'
+
+
+def process_file(file, N=10, case_sensitive=False):
+    """
+    process_file(file, N=10)
+
+    Process a file and return some text giving the top
+    N words in the file.
+    """
+    stats_text = underline(f"File \"{file}\" Top {N} Word Frequencies")
+
+    frequency_dict = fp.parse(file, case_sensitive=case_sensitive,
+                              sort=True)
 
     freqs = top_frequencies(frequency_dict, nterms=N)
-
-    for key, value in freqs.items():
-        stats_text += f"{key}, value"
+    stats_text += _dict_to_text(freqs)
 
     return stats_text, frequency_dict
 
 
-def process_dir(dirname, extension, exclusions=[], report=False):
-    stats_text = ""
-    report_text = ""
+def process_dir(dirname, extension, N, case):
     files = glob.glob(os.path.join(dirname, f'*.{extension}'))
-    
+    if not len(files):
+        raise FileNotFoundError("No Files!")
+
+    stats_text = underline(f"Directory \"{dirname}\" Top {N} Word Frequencies")
+
     dicts = []
     for file in files:
-        stat, rep, dic = fileparser.process_file(file, exclusions, report)
+        stat, dic = process_file(file, N, case)
         stats_text += stat
-        report_text += rep
         dicts.append(dic)
-        
-    combined_dict = fileparser.sort_dict(fileparser.combine_dicts(dicts))
-    
 
-    return stats_text, report_text, files, dicts, combined_dict
+    combined_dict = fp.sort_dict(fp.combine_dicts(dicts))
+    top_freqs = top_frequencies(combined_dict, N)
+    stats_text += underline(f"All Files in {dirname} Top {N} Word Frequencies")
+    stats_text += _dict_to_text(top_freqs)
+
+    return stats_text, dicts, combined_dict

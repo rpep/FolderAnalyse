@@ -17,25 +17,19 @@ def test_top_frequencies_list_exceeds_dict():
     # top frequency routines.
     keys = "abcdefghijklmnopqrstuvwxyz"
     N = len(keys)
-    
+
     freq_dict = {}
 
     for i in range(N-1, -1, -1):
         freq_dict[keys[N - i - 1]] = i
-    
+
     freq_dict = sort_dict(freq_dict)
-    
-    print(freq_dict)
-    
+
+
     top_freqs = top_frequencies(freq_dict, nterms=10)
-    
+
     solution = {'a': 25, 'b': 24, 'c': 23, 'd': 22, 'e': 21,
                 'f': 20, 'g': 19, 'h': 18, 'i':17 , 'j': 16}
 
     for key, value in top_freqs.items():
         assert solution[key] == value, "Something has gone wrong with sorting."
-        
-    
-        
-    
-        

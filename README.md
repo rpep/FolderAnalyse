@@ -28,12 +28,14 @@ FolderAnalyse /path/to/a/file.txt
 ```
 
 To generate statistics about all *.txt files in a folder:
-```
+
+```bash
 FolderAnalyse /path/to/a/folder
 ```
 
 To generate statistics about all *.md files in a folder:
-```
+
+```bash
 FolderAnalyse /path/to/a/folder -t ".md"
 ```
 
