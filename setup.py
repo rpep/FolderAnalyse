@@ -37,5 +37,5 @@ setup(
         "Source Code": "https://github.com/rpep/FolderAnalyse",
     },
     install_requires = ["pytest"],
-    python_requires="3.6",
+    python_requires=">= 3.6",
 )
