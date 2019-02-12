@@ -6,15 +6,23 @@ project.
 
 """
 from setuptools import setup, find_packages
+import os
+
 
 setup(
    name='FolderAnalyse',
-   version='0.1',
+   version='0.1.1',
    description='A program that analyses files in a directory with '
                'word frequency statistics.',
    author='Ryan Pepper',
    author_email='ryan.pepper@soton.ac.uk',
    packages=find_packages(),
+   package_data={'FolderAnalyse': ['*.txt', os.path.join('FolderAnalyse', 
+                                                         'tests'
+                                                         'example_documents',
+                                                         '*.txt')]
+                 },
+   include_package_data = True,
    entry_points = {
         "console_scripts": [ "FolderAnalyse=FolderAnalyse.script:main" ]
        },
