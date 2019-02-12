@@ -1,5 +1,7 @@
 # FolderAnalyse
 
+[![Build Status](https://travis-ci.com/rpep/folder-analyse.svg?branch=master)](https://travis-ci.com/rpep/folder-analyse)
+
 The problem definition:
 
 > Consider a folder containing a number of text files.
