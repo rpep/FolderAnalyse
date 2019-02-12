@@ -5,6 +5,8 @@ Welcome to FolderAnalyse's documentation!
    :maxdepth: 2
    :caption: Contents:
 
+   source/*
+
 Installation
 ============
 
@@ -24,8 +26,8 @@ Alternatively, you can install the development version from GitHub via:
    pip3 install git+https://github.com/rpep/FolderAnalyse
 
 
-Tutorial
-========
+Quick Tutorial
+==============
 
 Here we give some information about the module FolderAnalyse.
 
@@ -52,10 +54,20 @@ Tests make use of out-of-copyright Project Gutenberg books as useful reference c
 These are included in the tests/ folder.
 
 
+API
+===
+
+In general FolderAnalyse is designed to be used from the command line, but
+here I'll show how you can use the functions in your own projects.
+
+The bulk of the interesting code is in :mod:`FolderAnalyse.process`.
+
+
+
+
 Indices and tables
 ==================
 
 * :ref:`genindex`
 * :ref:`modindex`
-* :ref:`modules`
 * :ref:`search`
