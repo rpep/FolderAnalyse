@@ -1,5 +1,5 @@
 """
-Ryan Pepper (2018)
+Ryan Pepper (2019-)
 
 This script sets configuration options for setuptools for the FolderAnalyse
 project.
