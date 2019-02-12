@@ -1,8 +1,3 @@
-.. FolderAnalyse documentation master file, created by
-   sphinx-quickstart on Tue Feb 12 15:09:22 2019.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
-
 Welcome to FolderAnalyse's documentation!
 =========================================
 
@@ -13,17 +8,19 @@ Welcome to FolderAnalyse's documentation!
 Installation
 ============
 
-FolderAnalyse requires Python 3.6 or above, and has been tested on Linux or MacOS.
+FolderAnalyse requires Python 3.6 or above, and has been tested on Linux and MacOS.
 
 Once Python in installed, simply install the package from Python.org, via:
 
-.. code:: bash
+.. code-block:: bash
+
    pip3 install FolderAnalyse
 
 
 Alternatively, you can install the development version from GitHub via:
 
-.. highlight:: bash
+.. code-block:: bash
+
    pip3 install git+https://github.com/rpep/FolderAnalyse
 
 
@@ -34,19 +31,20 @@ Here we give some information about the module FolderAnalyse.
 
 To generate statistics about a particular file:
 
-.. highlight:: bash
-   FolderAnalyse /path/to/a/file.txt
+.. code-block:: bash
 
+   FolderAnalyse /path/to/a/file.txt
 
 To generate statistics about all *.txt files in a folder:
 
-.. highlight:: bash
-   FolderAnalyse /path/to/a/folder
+.. code-block:: bash
 
+   FolderAnalyse /path/to/a/folder
 
 To generate statistics about all *.md files in a folder:
 
-.. highlight:: bash
+.. code-block:: bash
+
    FolderAnalyse /path/to/a/folder -t ".md"
 
 
@@ -59,4 +57,5 @@ Indices and tables
 
 * :ref:`genindex`
 * :ref:`modindex`
+* :ref:`modules`
 * :ref:`search`
