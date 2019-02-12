@@ -10,42 +10,46 @@ import re
 import logging
 
 
-def _read(filename, encodings=['utf-8', 'utf-16', 'ascii', 'latin-1']):
+def _read(filename, encodings=['ascii', 'utf-8', 'utf-16', 'latin-1']):
     """
     _read(filename)
 
     Try to read files and return the text regardless of their encoding.
     Raises UnicodeError on failure.
-    
+
     Input:
-    
+
     filename, str
         File to be read
-    
+
     Output:
         str:
             Contents of the file
     """
     text = None
-    
-    while not text:
-        for encoding in encodings:
-            try:
-                f = open(filename, 'r', encoding=encoding)
-                text = f.read()
-            except UnicodeDecodeError:
-                f.close()
-            except FileNotFoundError:
-                raise FileNotFoundError("Could not open file.")
+
+    for encoding in encodings:
+        try:
+            f = open(filename, encoding=encoding)
+            text = f.read()
+            f.close()
+        except UnicodeDecodeError:
+            f.close()
+        except UnicodeError:
+            f.close()
+        except FileNotFoundError:
+            raise FileNotFoundError("Could not open file.")
+
+    if not text:
         raise UnicodeError(filename)
 
-    f.close()
     return text
-    
+
+
 def parse(filename, case_sensitive=False, sort=False):
     """
     parse(filename, case_sensitive=False, sort=False)
-    
+
     Opens a file, and reads it line by line, returning a dictionary
     containing key-value pairs of words and their frequency in the file.
     Note: newline characters are *always* removed from the file.
@@ -70,15 +74,23 @@ def parse(filename, case_sensitive=False, sort=False):
      'over: 1, 'the': 1, 'lazy': 1, 'dog.': 1}
     """
 
-
     text = _read(filename)
-
 
     # If case_sensitive is true we make the text all lower case.
     if not case_sensitive:
         text = text.lower()
 
-    words = re.findall(r'\w*[\'-]*\w', text)
+    # Note: we here process a word as being anything with
+    # A-Z, a-z, 0-9, or any unicode characters in the 
+    # range 00c00-u02b08 which is a number of weird characters
+    # not normally used in English. The range was found by manually
+    # looking through the table located at
+    #   https://unicode-table.com/en/#ipa-extensions
+    # for some common vowels that occur in other languages.
+    # The motivation for this was in processing moby-dick.txt
+    # in the examples where â was being misinterpreted as 
+    # a word boundary by the re module.
+    words = re.findall(r'\w*[\'-\u00c00-u02b08]*\w', text)
 
     frequency_dict = {word: 0 for word in words}
     # Do it this way rather than using count, because it avoids
@@ -91,7 +103,6 @@ def parse(filename, case_sensitive=False, sort=False):
         # 3.6 and above but that is not the case for old versions where you
         # must use collections.OrderedDict.
         frequency_dict = sort_dict(frequency_dict)
-
 
     return frequency_dict
 
