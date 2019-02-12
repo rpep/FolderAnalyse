@@ -10,6 +10,11 @@ Welcome to FolderAnalyse's documentation!
    :maxdepth: 2
    :caption: Contents:
 
+Tutorial
+=========
+
+Here we give some information about the module FolderAnalyse.
+
 
 
 Indices and tables
