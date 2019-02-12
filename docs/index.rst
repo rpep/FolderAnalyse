@@ -23,7 +23,7 @@ Once Python in installed, simply install the package from Python.org, via:
 
 Alternatively, you can install the development version from GitHub via:
 
-.. code:: bash
+.. highlight:: bash
    pip3 install git+https://github.com/rpep/FolderAnalyse
 
 
@@ -34,20 +34,21 @@ Here we give some information about the module FolderAnalyse.
 
 To generate statistics about a particular file:
 
-.. code:: bash
+.. highlight:: bash
    FolderAnalyse /path/to/a/file.txt
 
 
 To generate statistics about all *.txt files in a folder:
 
-.. code:: bash
+.. highlight:: bash
    FolderAnalyse /path/to/a/folder
 
 
 To generate statistics about all *.md files in a folder:
-```
-FolderAnalyse /path/to/a/folder -t ".md"
-```
+
+.. highlight:: bash
+   FolderAnalyse /path/to/a/folder -t ".md"
+
 
 Tests make use of out-of-copyright Project Gutenberg books as useful reference cases.
 These are included in the tests/ folder.
