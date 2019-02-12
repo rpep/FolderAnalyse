@@ -31,10 +31,6 @@ def parse_args():
                         help="By default, processing is case sensitive.\n"
                              "Add this flag to make it case insensitive")
 
-    parser.add_argument('-e', '--exclude', type=str, nargs='+',
-                        help="Remove these strings from the text before\n"
-                             "processing.")
-
     return parser.parse_args()
 
 
