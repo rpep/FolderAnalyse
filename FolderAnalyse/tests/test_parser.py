@@ -4,7 +4,34 @@ import os
 
 file_dir = os.path.dirname(__file__)
 
+
+def test_read():
+    """
+    test_read()
+
+    This test checks the fileparser._read function's ability
+    to handle files of different encodings.
+
+    It opens files of each encoding, writes them, and
+    then tries to open the file.
+    """
+
+    encodings = ['utf-8', 'utf-16', 'latin-1', 'ascii']
+    for encoding in encodings:
+        f = open('test.txt', 'w', encoding=encoding)
+        f.write("Some text to handle!")
+        f.close()
+        p._read("test.txt")
+
+
 def test_parser_unsorted():
+    """
+    test_parser_unsorted()
+
+    This test checks the file parser, checking a variety of properties are as
+    as expected including when the sorted option is not selected.
+
+    """
     file = os.path.join(file_dir, "example_documents",
                         "a-tale-of-two-cities.txt")
     print(file)
@@ -27,6 +54,13 @@ def test_parser_unsorted():
                           "had been found in the body of the text."
 
 def test_parser_sorted():
+    """
+    test_parser_unsorted()
+
+    This test checks the file parser, checking a variety of properties are as
+    as expected. This, however, checks that the items are sorted correctly.
+
+    """
     file = os.path.join(file_dir, "example_documents", "a-tale-of-two-cities.txt")
     freq_dict = p.parse(file, case_sensitive=True, sort=True)
 
