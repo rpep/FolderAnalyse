@@ -19,13 +19,13 @@ def parse(filename, case_sensitive=False, sort=False):
     containing key-value pairs of words and their frequency in the file.
     Note: newline characters are *always* removed from the file.
 
-    Inputs
-    ------
+    Inputs:
+
     filename, str
         The file to be calculate word frequencies.
 
-    Examples
-    --------
+    Examples:
+
     >>> text = "The quick brown fox jumped over the lazy dog."
     >>> f = open('example.txt', 'w')
     >>> f.write(text)
@@ -82,21 +82,20 @@ def sort_dict(frequency_dict, reverse=True):
 
     Sorts a dictionary based on the numerical values stored in the dict.
 
-    Inputs
-    ------
+    Inputs:
+
     dictionary, dict
         Dictionary with integer values.
 
-    Examples
-    --------
+    Examples:
+
     >>> a = {'a': 2, 'b': 1, 'c': 5}
     >>> FolderAnalyse.fileparser.sort_dict(a, reverse=True)
     {'c': 5, 'a': 2, 'b': 1}
     >>> FolderAnalyse.fileparser.sort_dict(a, reverse=False)
     {'b': 1, 'a': 2, 'c': 5}
 
-    Notes
-    -----
+    Notes:
 
     Dictionarys are ordered in Python 3.6 and above but that is not the
     case for old versions where you must use collections.OrderedDict.
@@ -114,13 +113,12 @@ def combine_dicts(dicts_list):
     Combines dictionaries by summing the numerical values of any keys
     which are shared between them.
 
-    Inputs
-    ------
+    Inputs:
+
     dicts_list, list
         A list containing dictionaries with integer values.
 
-    Example
-    -------
+    Example:
 
     >>> a = {'a': 2, 'b': 1, 'c': 5}
     >>> b = {'b': 4, 'c': 12, 'e': 4}
