@@ -70,8 +70,8 @@ def process_file(filename, N=10, case_sensitive=False):
     frequency_dict = fp.parse(filename, case_sensitive=case_sensitive,
                               sort=True)
 
-    freqs = top_frequencies(frequency_dict, nterms=N)
-    stats_text += _dict_to_text(freqs)
+    top_freq = top_frequencies(frequency_dict, nterms=N)
+    stats_text += _dict_to_text(top_freq)
 
     return stats_text, frequency_dict, top_freq
 
@@ -83,9 +83,9 @@ def process_dir(dirname, extension="txt", N=10, case_sensitive=False):
     Processes all files in the given directory, and calls 
     process_file on each of them. It then returns a report along with
     the data used to construct this.
-    
+
     Inputs:
-        
+
     dirname, str:
         Directory to be processed
     extension, str:
@@ -95,7 +95,7 @@ def process_dir(dirname, extension="txt", N=10, case_sensitive=False):
     case_sensitive, bool:
         Whether processing should be case sensitive or not, i.e.
         if 'the' is the same as 'The' for counting word frequencies.
-    
+
     Outputs:
         str:
             Text report detailing the word frequencies for displaying.
