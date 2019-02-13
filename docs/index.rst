@@ -97,7 +97,7 @@ In general FolderAnalyse is designed to be used from the command line, but
 here I'll show how you can use the functions in your own projects.
 
 The bulk of the interesting code is in :mod:`FolderAnalyse.process`, in the two functions
-:func:`FolderAnalyse.process_file` and :func:`FolderAnalyse.process_dir`.
+:func:`~FolderAnalyse.process.process_file` and :func:`~FolderAnalyse.process.process_dir`.
 
 To process a file and get the frequency dictionary, simply:
 
@@ -130,7 +130,7 @@ If we create another file, we can use directory processing:
    3
    
 If the word counts are all that is required, this can be handled just using
-the function :func:`FolderAnalyse.fileparser.parse`.
+the function :func:`FolderAnalyse.fileparser.~parse`.
 
 .. code-block:: python
 
