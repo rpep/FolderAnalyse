@@ -130,7 +130,7 @@ If we create another file, we can use directory processing:
    3
    
 If the word counts are all that is required, this can be handled just using
-the function :func:`FolderAnalyse.fileparser.~parse`.
+the function :func:`~FolderAnalyse.fileparser.parse`.
 
 .. code-block:: python
 
