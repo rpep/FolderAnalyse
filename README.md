@@ -2,7 +2,8 @@
 
 [![Build Status](https://travis-ci.com/rpep/folder-analyse.svg?branch=master)](https://travis-ci.com/rpep/folder-analyse)
 [![Documentation Status](https://readthedocs.org/projects/folderanalyse/badge/?version=latest)](https://folderanalyse.readthedocs.io/en/latest/?badge=latest)
-
+[![PyPI version](https://badge.fury.io/py/FolderAnalyse.svg)](https://badge.fury.io/py/FolderAnalyse)
+![Python version](https://img.shields.io/badge/Python-%3E%3D%203.6-brightgreen.svg)]
 FolderAnalyse is an application which provides word frequency statistics about files.
 It is designed for use primarily as a command line application, but it can also be 
 used as a library.
