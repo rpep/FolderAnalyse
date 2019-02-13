@@ -20,14 +20,6 @@ FolderAnalyse.process module
     :undoc-members:
     :show-inheritance:
 
-FolderAnalyse.report module
----------------------------
-
-.. automodule:: FolderAnalyse.report
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
 FolderAnalyse.script module
 ---------------------------
 
