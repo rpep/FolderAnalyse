@@ -19,7 +19,7 @@ def read(fname):
 
 setup(
     name='FolderAnalyse',
-    version='0.1.2',
+    version='0.2.0',
     description='A program that analyses files in a directory with '
                 'word frequency statistics.',
     long_description=read("README.md"),
