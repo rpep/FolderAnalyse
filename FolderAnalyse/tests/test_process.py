@@ -81,7 +81,7 @@ def test_process_file_case_insensitive():
     This test checks that a file is processed correctly.
     """
 
-    stats, freqs, top_freqs = process_file('simple.txt', 
+    stats, freqs, top_freqs = process_file(os.path.join(docs_path, 'simple.txt'),
                                            N=2,
                                            case_sensitive=False)
     assert freqs['the'] == 4
@@ -99,7 +99,7 @@ def test_process_file_case_sensitive():
     case sensitivity is used.
     """
 
-    stats, freqs, top_freqs = process_file('simple.txt', 
+    stats, freqs, top_freqs = process_file(os.path.join(docs_path, 'simple.txt'), 
                                            N=2,
                                            case_sensitive=True)
 
