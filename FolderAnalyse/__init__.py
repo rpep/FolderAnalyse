@@ -1,5 +1,12 @@
+"""
+Ryan Pepper (2018)
+
+__init__.py
+
+Module base
+"""
+
 import pytest
-import glob
 import os
 name='FolderAnalyse'
 

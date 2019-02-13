@@ -7,7 +7,6 @@ This file contains a parser function that processes a text file.
 
 """
 import re
-import logging
 
 
 def _read(filename, encodings=['ascii', 'utf-8', 'utf-16', 'latin-1']):
@@ -18,9 +17,8 @@ def _read(filename, encodings=['ascii', 'utf-8', 'utf-16', 'latin-1']):
     Raises UnicodeError on failure.
 
     Input:
-
-    filename, str
-        File to be read
+        filename, str
+            File to be read
 
     Output:
         str:
@@ -55,9 +53,19 @@ def parse(filename, case_sensitive=False, sort=False):
     Note: newline characters are *always* removed from the file.
 
     Inputs:
+        filename, str:
+            The file to be calculate word frequencies.
+        case_sensitive, bool:
+            Whether processing should be case sensitive or not, i.e.
+            if 'the' is the same as 'The' for counting word frequencies.
+        sort, bool:
+            Setting True enables sorting dict by word frequency.
+            
+    Outputs:
+        dict:
+            Dictionary containing key-value pairs of words and their
+            frequency in the file.
 
-    filename, str
-        The file to be calculate word frequencies.
 
     Examples:
 
@@ -114,9 +122,13 @@ def sort_dict(frequency_dict, reverse=True):
     Sorts a dictionary based on the numerical values stored in the dict.
 
     Inputs:
-
-    dictionary, dict
-        Dictionary with integer values.
+        dictionary, dict:
+            Dictionary with integer values.
+        
+    Outputs:
+        dictionary, dict:
+            Dictionary sorted by value.
+            
 
     Examples:
 
@@ -145,9 +157,12 @@ def combine_dicts(dicts_list):
     which are shared between them.
 
     Inputs:
-
-    dicts_list, list
-        A list containing dictionaries with integer values.
+        dicts_list, list
+            A list containing dictionaries with integer values.
+            
+    Outputs:
+        dict:
+            A combined dictionary with summed values.
 
     Example:
 

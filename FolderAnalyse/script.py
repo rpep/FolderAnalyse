@@ -1,6 +1,8 @@
 """
 Ryan Pepper (2018)
 
+script.py
+
 This script contains the main entrypoint to the folder-analyse application.
 
 """
@@ -65,7 +67,13 @@ def _exit(message, parser):
 
 def main():
     """
-    Main func
+    main()
+
+    Main function which is the entrypoint to the application.
+
+    Gets parsed arguments, and constructs a report which is printed to the
+    screen based on them. To see how the arguments affect the output, look at
+    :func:`FolderAnalyse.script.get_parser`
     """
     parser = _get_parser()
     args = parser.parse_args()
@@ -88,12 +96,11 @@ def main():
             stats_text, _, _ = process_file(path, N, case)
 
         except FileNotFoundError:
-            _exit(f"File {path} not found.",
-                 parser)
+            _exit(f"File {path} not found.", parser)
 
-        except UnicodeError:
+        except UnicodeError as e:
             _exit(f"Could not open file {e.args[0]} as encoding could not be "
-                   "detected.")
+                  "detected.")
 
     elif directory:
         try:
@@ -101,13 +108,13 @@ def main():
 
         except FileNotFoundError:
             _exit(f"No files with extension {extension} found in directory",
-                 parser)
+                  parser)
         except UnicodeError as e:
             _exit(f"Could not open file {e.args[0]} as encoding could not be "
-                   "detected and could not be processed.")
+                  "detected and could not be processed.")
 
     else:
-         _exit("File or directory does not exist", parser)
+        _exit("File or directory does not exist", parser)
 
     print(stats_text)
 

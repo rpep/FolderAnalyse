@@ -1,3 +1,12 @@
+"""
+Ryan Pepper (2018)
+
+process.py
+
+Module containing functions that process word frequnecy dicts
+into a report format.
+
+"""
 import glob
 import os
 from FolderAnalyse import fileparser as fp
@@ -8,6 +17,18 @@ def top_frequencies(freq_dict, nterms=10):
     top_frequencies(freq_dict, name, nterms)
 
     Returns the first nterms in the dictionary.
+
+    Input:
+        freq_dict, dict:
+            Dictionary of word frequencies.
+
+        nterms, int;
+            Number of word frequencies in returned dictionary.
+
+    Output:
+        dict:
+            The reduced size dictionary.
+
 
     Note:
     This wrapper is needed just to handle
@@ -27,6 +48,14 @@ def _dict_to_text(freq_dict):
     Internal routine to print items and values
     in a sorted dictionary, to avoid duplicating
     this code in process_file and in process_dir.
+
+    Inputs:
+        freq_dict, dict
+            Dictionary of words and frequencies.
+
+    Outputs:
+        str:
+            Text block with numerated key-value pairs.
     """
     stats_text = ""
     for i, (key, value) in enumerate(freq_dict.items()):
@@ -37,8 +66,20 @@ def _dict_to_text(freq_dict):
 
 def underline(title):
     """
+    underline(title)
+
     Returns title but with another line matching the
     length as in restructured text format.
+
+    Inputs:
+        title, str:
+            Title to be underlined.
+
+    Outputs:
+        str:
+            Multiline string with underlining.
+
+    Example:
 
     >>> print(FolderAnalyse.process.underline('Hello'))
     Hello
@@ -53,9 +94,24 @@ def process_file(filename, N=10, case_sensitive=False):
 
     Process a file and return some text giving the top
     N words in the file and the original frequency dictionary.
-    
+
     Inputs:
-        file
+        filename, str:
+            File to be processed.
+        N, int:
+            Number of top frequencies to add to report
+        case_sensitive, bool:
+            Whether processing should be case sensitive or not, i.e.
+            if 'the' is the same as 'The' for counting word frequencies.
+
+
+    Outputs:
+        str:
+            Textual report about word frequency in files.
+        dict:
+            Total word frequency dict
+        dict:
+            Reduced wrod frequency dict with N terms.
 
     Example:
     >>> f = open('test.txt', 'w')
@@ -80,21 +136,20 @@ def process_dir(dirname, extension="txt", N=10, case_sensitive=False):
     """
     process_dir(dirname, extension, N=10, case_sensitive=False)
 
-    Processes all files in the given directory, and calls 
-    process_file on each of them. It then returns a report along with
-    the data used to construct this.
+    Processes all files in the given directory, and calls process_file on each
+    of them. It then returns a report along with the data used to construct
+    this.
 
     Inputs:
-
-    dirname, str:
-        Directory to be processed
-    extension, str:
-        File extension to process in the directory.
-    N, int:
-        How many top frequencies should be calculated.
-    case_sensitive, bool:
-        Whether processing should be case sensitive or not, i.e.
-        if 'the' is the same as 'The' for counting word frequencies.
+        dirname, str:
+            Directory to be processed
+        extension, str:
+            File extension to process in the directory.
+        N, int:
+            How many top frequencies should be calculated.
+        case_sensitive, bool:
+            Whether processing should be case sensitive or not, i.e.
+            if 'the' is the same as 'The' for counting word frequencies.
 
     Outputs:
         str:
