@@ -126,7 +126,7 @@ def test_process_dir_case_insensitive():
                                                     case_sensitive=False)
     
     
-    assert top_c['the'] == 46597
+    assert top_c['the'] == 46584
 
 
 def test_process_dir_case_sensitive():
@@ -146,9 +146,9 @@ def test_process_dir_case_sensitive():
                                                     case_sensitive=True)
 
 
-    assert top_c['the'] == 43932
-    assert top_c['and'] == 28104
-    assert c_dict['The'] + c_dict['the'] + c_dict['THE'] == 46597
+    assert top_c['the'] == 43920
+    assert top_c['and'] == 28094
+    assert c_dict['The'] + c_dict['the'] + c_dict['THE'] == 46584
     
     
     
