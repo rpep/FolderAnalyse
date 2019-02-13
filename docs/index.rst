@@ -14,7 +14,7 @@ FolderAnalyse requires Python 3.6 or above, and has been tested on Linux and Mac
 
 First, to install Python, visit Python.org, or try the Anaconda.org distribution.
 
-Once Python in installed, simply install the package using the Python package manager
+Once Python is installed, simply install the package using the Python package manager
 pip, by running on the command line:
 
 .. code-block:: bash
@@ -64,11 +64,13 @@ To generate statistics about all files in a folder:
 
    FolderAnalyse /path/to/a/folder
 
-To generate statistics about all *.md files in a folder:
+
+To generate statistics about all "\*.md" files in a folder:
 
 .. code-block:: bash
 
    FolderAnalyse /path/to/a/folder -t ".md"
+
 
 To save the outputted text as a report:
 
@@ -76,11 +78,13 @@ To save the outputted text as a report:
 
    FolderAnalyse /path/to/a/folder -s report.txt
 
+
 The tests for the project can be run from the command line with:
 
 .. code-block:: bash
 
    FolderAnalyse . -r
+
 
 For the test cases I made use of out-of-copyright Project Gutenberg books as useful reference cases.
 These are included in the tests/example_docs folder.
