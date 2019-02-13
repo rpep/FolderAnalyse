@@ -12,22 +12,25 @@ Installation
 
 FolderAnalyse requires Python 3.6 or above, and has been tested on Linux and MacOS.
 
-Once Python in installed, simply install the package from Python.org, via:
+First, to install Python, visit Python.org, or try the Anaconda.org distribution.
+
+Once Python in installed, simply install the package using the Python package manager
+pip, by running on the command line:
 
 .. code-block:: bash
 
-   pip3 install FolderAnalyse
+   pip install FolderAnalyse
 
 
 Alternatively, you can install the development version from GitHub via:
 
 .. code-block:: bash
 
-   pip3 install git+https://github.com/rpep/FolderAnalyse
+   pip install git+https://github.com/rpep/FolderAnalyse
 
 
-Quick Tutorial
-==============
+Command Line Use
+================
 
 Here we give some information about the module FolderAnalyse.
 
@@ -132,7 +135,12 @@ the function :func:`FolderAnalyse.fileparser.parse`.
    {'writing': 1, 'words': 1, 'to': 1, 'the': 1, 'second': 1, 'file': 1}
    
 
-   
+The tests for the project can be run directly from the Python interpreter with:
+
+.. code-block:: python
+
+   >>> import FolderAnalyse
+   >>> FolderAnalyse.runtests()   
 
 
 
