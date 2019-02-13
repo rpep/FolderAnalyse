@@ -85,7 +85,7 @@ def main():
 
     if file:
         try:
-            stats_text, freq_dict = process_file(path, N, case)
+            stats_text, _, _ = process_file(path, N, case)
 
         except FileNotFoundError:
             _exit(f"File {path} not found.",
@@ -97,9 +97,7 @@ def main():
 
     elif directory:
         try:
-            stats_text, _, _, _, combined_dict = process_dir(path, 
-                                                             extension,
-                                                             N, case)
+            stats_text, _, _, _, _ = process_dir(path, extension, N, case)
 
         except FileNotFoundError:
             _exit(f"No files with extension {extension} found in directory",
